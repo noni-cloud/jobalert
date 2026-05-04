@@ -1,0 +1,56 @@
+{% extends 'jobapp/base.html' %}
+
+{% block title %}Nearby Jobs - JobSeeker{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow">
+    <h1 class="text-info mb-4">Find Nearby Jobs <i class="bi bi-geo-alt ms-2"></i></h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-lg-4 col-md-6">
+                <label for="location_name" class="form-label">Location Name</label>
+                <input type="text" class="form-control" id="location_name" name="location_name" value="{{ location_name }}" placeholder="e.g. New York, NY">
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <label for="latitude" class="form-label">Latitude</label>
+                <input type="number" class="form-control" id="latitude" name="latitude" step="any" value="{{ search_lat }}">
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <label for="longitude" class="form-label">Longitude</label>
+                <input type="number" class="form-control" id="longitude" name="longitude" step="any" value="{{ search_lon }}">
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <label for="radius" class="form-label">Radius (km)</label>
+                <input type="number" class="form-control" id="radius" name="radius" value="{{ search_radius }}" min="1" max="500">
+            </div>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-info btn-lg px-4">🔍 Search Nearby Jobs</button>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4 ms-2">Home</a>
+        </div>
+    </form>
+</div>
+
+{% if jobs %}
+<h2 class="mt-5">Nearby Jobs ({{ location_name }})</h2>
+<div class="row">
+    {% for job, dist in jobs %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <p class="card-text">{{ job.description|truncatewords:20 }}</p>
+                <p class="text-muted">{{ job.company }} - {{ job.location_name }}</p>
+                <p><strong>Distance:</strong> {{ dist|floatformat:1 }} km</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-info">
+        No jobs found within {{ search_radius }} km of the location.
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

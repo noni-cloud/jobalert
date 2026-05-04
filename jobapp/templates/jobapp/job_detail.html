@@ -1,0 +1,51 @@
+{% extends 'jobapp/base.html' %}
+
+{% block title %}{{ job.title }} - JobSeeker{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h1 class="mb-0 fw-bold">{{ job.title }}</h1>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="text-primary"><i class="bi bi-building me-2"></i>{{ job.company }}</h6>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <span class="badge bg-success fs-6">Active Job</span>
+                    </div>
+                </div>
+                <div class="map-placeholder mb-4">
+                    Map would show location here ({{ job.latitude }}, {{ job.longitude }})
+                </div>
+                <h5 class="fw-bold mb-3">Description</h5>
+                <p class="lead">{{ job.description }}</p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Location:</strong> {{ job.location_name }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Posted:</strong> {{ job.created_at|date:"M d, Y" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header bg-light">
+                <h6 class="mb-0 fw-bold text-primary">Quick Actions</h6>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'job_list' %}" class="btn btn-outline-secondary w-100 mb-2">← Back to Jobs</a>
+                <a href="{% url 'post_job' %}" class="btn btn-success w-100">Post Similar Job</a>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{% url 'job_list' %}" class="btn btn-secondary mt-3">Back to Jobs</a>
+{% endblock %}

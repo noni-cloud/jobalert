@@ -1,0 +1,52 @@
+{% extends 'jobapp/base.html' %}
+
+{% block title %}Post Job - JobSeeker{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow">
+    <h1 class="text-primary mb-4">Post a New Job <i class="bi bi-plus-circle ms-2"></i></h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+                    {% if form.title.errors %}{{ form.title.errors }}{% endif %}
+                </div>
+                <div class="col-md-6">
+                    {{ form.company.label_tag }}
+                    {{ form.company }}
+                    {% if form.company.errors %}{{ form.company.errors }}{% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            {{ form.location_name.label_tag }}
+            {{ form.location_name }}
+            {% if form.location_name.errors %}{{ form.location_name.errors }}{% endif %}
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                {{ form.latitude.label_tag }}
+                {{ form.latitude }}
+                {% if form.latitude.errors %}{{ form.latitude.errors }}{% endif %}
+            </div>
+            <div class="col-md-6">
+                {{ form.longitude.label_tag }}
+                {{ form.longitude }}
+                {% if form.longitude.errors %}{{ form.longitude.errors }}{% endif %}
+            </div>
+        </div>
+        <div class="mb-4">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {% if form.description.errors %}{{ form.description.errors }}{% endif %}
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="submit" class="btn btn-primary btn-lg px-4">Post Job</button>
+            <a href="{% url 'job_list' %}" class="btn btn-outline-secondary btn-lg px-4 ms-md-2">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

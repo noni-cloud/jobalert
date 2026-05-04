@@ -1,0 +1,53 @@
+{% extends 'jobapp/base.html' %}
+
+{% block title %}Subscribe for Alerts - JobSeeker{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow">
+    <div class="text-center mb-4">
+        <h1 class="text-success mb-2">Subscribe for Alerts <i class="bi bi-bell ms-2"></i></h1>
+        <p class="lead">Get notified about jobs within your radius automatically.</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="col-md-6">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+            </div>
+            <div class="col-md-6">
+                {{ form.radius_km.label_tag }}
+                {{ form.radius_km }}
+            </div>
+        </div>
+        <div class="mb-4">
+            {{ form.location_name.label_tag }}
+            {{ form.location_name }}
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                {{ form.latitude.label_tag }}
+                {{ form.latitude }}
+            </div>
+            <div class="col-md-6">
+                {{ form.longitude.label_tag }}
+                {{ form.longitude }}
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="submit" class="btn btn-success btn-lg px-4">Subscribe Now</button>
+            <a href="{% url 'job_list' %}" class="btn btn-outline-secondary btn-lg px-4 ms-md-2">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'jobapp/base.html' %}
+
+{% block title %}Home - JobSeeker{% endblock %}
+
+{% block content %}
+<section class="hero text-center text-white">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-4">Welcome to JobSeeker!</h1>
+        <p class="lead fs-4 mb-5">Find nearby jobs & get personalized alerts. Post openings or subscribe in seconds.</p>
+        <div class="d-grid d-md-flex gap-3 justify-content-md-center">
+            <a class="btn btn-light btn-lg px-5" href="{% url 'job_list' %}">Browse Jobs</a>
+            <a class="btn btn-outline-light btn-lg px-5" href="{% url 'subscribe_alert' %}">Get Alerts</a>
+        </div>
+    </div>
+</section>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Browse Jobs</h3>
+        <p>View all active job listings.</p>
+        <a href="{% url 'job_list' %}" class="btn btn-outline-primary">Go</a>
+    </div>
+    <div class="col-md-4">
+        <h3>Post a Job</h3>
+        <p>Add your job opening with location.</p>
+        <a href="{% url 'post_job' %}" class="btn btn-outline-success">Post</a>
+    </div>
+    <div class="col-md-4">
+        <h3>Nearby Search</h3>
+        <p>Search jobs near a location.</p>
+        <a href="{% url 'nearby_jobs' %}" class="btn btn-outline-info">Search</a>
+    </div>
+</div>
+{% endblock %}
