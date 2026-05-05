@@ -1,0 +1,89 @@
+/* JobSeeker Custom Styles */
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --light-bg: #f8f9fa;
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.navbar {
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--info-color) 100%);
+  color: white;
+  padding: 5rem 0;
+  margin-bottom: 3rem;
+  border-radius: 0 0 2rem 2rem;
+}
+
+.hero h1 {
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.card {
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn {
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+footer {
+  background: #343a40;
+  color: white;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.job-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--success-color);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+}
+
+.map-placeholder {
+  height: 200px;
+  background: var(--light-bg);
+  border: 2px dashed #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  border-radius: 0.5rem;
+}
