@@ -1,1 +1,1 @@
-1. [x] Create/update TODO.md with steps&#10;2. [x] Edit build.sh to append gunicorn start command&#10;3. [x] Edit Procfile to use build.sh as web command&#10;4. [x] Ensure executable (skipped chmod on Windows; bash scripts work via Git Bash/WSL/Heroku)&#10;5. [ ] Suggest git commit/push for deployment&#10;&#10;## Progress&#10;- Step 1: Done&#10;- Steps 2-3: Done (build.sh and Procfile updated)&#10;- Step 4: Done (local test: run via Git Bash or deploy to Heroku)
+2. [x] Edit build.sh to append runserver (updated per feedback)
