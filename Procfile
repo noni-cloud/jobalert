@@ -1,1 +1,1 @@
-web: gunicorn jobseeker.wsgi:application
+web: ./build.sh
