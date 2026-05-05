@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 pip install -r requirements.txt
 python manage.py collectstatic --noinput
-python manage.py migrate&#10;exec gunicorn jobseeker.wsgi:application
+exec python manage.py runserver 0.0.0.0:8000
